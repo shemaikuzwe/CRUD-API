@@ -28,11 +28,11 @@ async function createProduct(req, res) {
 async function updateProduct(req, res) {
   try {
     const { id } = req.params;
-    const product = await Prouduct.findByIdAndUpdate(id,req.body);
-    if(!product){
-      res.status(404).json({error:"product not found"})
+    const product = await Prouduct.findByIdAndUpdate(id, req.body);
+    if (!product) {
+      res.status(404).json({ error: "product not found" });
     }
-    const updatedproduct=await Prouduct.findById(id);
+    const updatedproduct = await Prouduct.findById(id);
     res.status(200).json(updatedproduct);
   } catch (error) {
     res.status(500).json({ error: error.message });
@@ -42,8 +42,8 @@ async function deleteProduct(req, res) {
   try {
     const { id } = req.params;
     const product = await Prouduct.findByIdAndDelete(id);
-    if(!product){
-      res.status(404).json("error:product not found")
+    if (!product) {
+      res.status(404).json("error:product not found");
     }
     res.status(200).json("product deleted successfully");
   } catch (error) {
@@ -55,5 +55,5 @@ module.exports = {
   getProduct,
   createProduct,
   updateProduct,
-  deleteProduct
+  deleteProduct,
 };
